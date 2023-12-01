@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<definitions name="ServiceCovoiturageService"
+    targetNamespace="http://ws/"
+    xmlns:typens="http://ws/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:soapnc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <types>
+        <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ws/">
+            <xsd:import namespace="http://ws/" schemaLocation="http://localhost:8585/?xsd=1" />
+        </xsd:schema>
+    </types>
+    <message name="getIds">
+        <part name="parameters" element="tns:getIds" />
+    </message>
+    <message name="getIdsResponse">
+        <part name="parameters" element="tns:getIdsResponse" />
+    </message>
+    <message name="getAvis">
+        <part name="parameters" element="tns:getAvis" />
+    </message>
+    <message name="getAvisResponse">
+        <part name="parameters" element="tns:getAvisResponse" />
+    </message>
+    <portType name="ServiceCovoiturage">
+        <operation name="getIds">
+            <input wsam:Action="http://ws/ServiceCovoiturage/getIdsRequest" message="tns:getIds" />
+            <output wsam:Action="http://ws/ServiceCovoiturage/getIdsResponse"
+                message="tns:getIdsResponse" />
+        </operation>
+        <operation name="getAvis">
+            <input wsam:Action="http://ws/ServiceCovoiturage/getAvisRequest" message="tns:getAvis" />
+            <output wsam:Action="http://ws/ServiceCovoiturage/getAvisResponse"
+                message="tns:getAvisResponse" />
+        </operation>
+    </portType>
+    <binding name="ServiceCovoituragePortBinding" type="tns:ServiceCovoiturage">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+        <operation name="getIds">
+            <soap:operation soapAction="" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+        </operation>
+        <operation name="getAvis">
+            <soap:operation soapAction="" />
+            <input>
+                <soap:body use="literal" />
+            </input>
+            <output>
+                <soap:body use="literal" />
+            </output>
+        </operation>
+    </binding>
+    <service name="ServiceCovoiturageService">
+        <documentation>Retourner liste des avis</documentation>
+        <port name="ServiceCovoituragePort" binding="tns:ServiceCovoituragePortBinding">
+            <soap:address location="http://localhost:8585/ServiceCovoiturage" />
+        </port>
+    </service>
+</definitions>
